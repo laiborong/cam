@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" contant="width=device-width, initial-scale=1.0">
+        <title>Camera frame</title>
+    </head>
+    <body>
+        <h1>視訊視窗</h1>
+        <div>
+            <video id="webCam" autoplay="true"></video>
+
+        </div>
+    <script>
+        let video = document.querySelector("#webCam");
+
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({video: true})
+            .then(function (stream){
+                video.srcObject = stream;
+            })
+            .catch (function (error){
+                console.log("somthing went wrong!");
+            })
+        }else{
+            console.log("getUserMedia not supported!");
+        }
+    </script>
+    </body>
+</html>
